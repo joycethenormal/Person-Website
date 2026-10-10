@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Joyce — Young Novelist</title>
+  <meta name="description" content="Joyce's personal corner of the internet: a sixth grader and novel writer." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#1f2a2b; --muted:#667477; --cream:#fbf8f0; --paper:#fffdf8; --sage:#b8cbb8; --green:#315d50; --coral:#dc765f; --line:#dfe4da; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); background:var(--cream); font-family:'DM Sans',sans-serif; line-height:1.6; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { max-width:1120px; margin:auto; padding:0 28px; }
+    nav { display:flex; align-items:center; justify-content:space-between; padding:24px 0; }
+    .brand { font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:800; letter-spacing:-.03em; }
+    .brand span { color:var(--coral); }
+    .navlinks { display:flex; gap:28px; color:var(--muted); font-size:.9rem; }
+    .navlinks a:hover { color:var(--coral); }
+    .hero { min-height:650px; display:grid; grid-template-columns:1.06fr .94fr; align-items:center; gap:50px; padding:44px 0 90px; }
+    .eyebrow { text-transform:uppercase; letter-spacing:.16em; font-size:.72rem; font-weight:700; color:var(--coral); }
+    h1,h2 { font-family:'Playfair Display',serif; line-height:1.05; letter-spacing:-.045em; margin:16px 0; }
+    h1 { font-family:'Dancing Script',cursive; font-size:clamp(3.5rem,7vw,6rem); max-width:680px; color:#8f9fe8; letter-spacing:-.02em; }
+    h1 em { color:#9966cc; font-style:normal; }
+    .hero p { font-size:1.12rem; color:var(--muted); max-width:520px; margin:25px 0 30px; }
+    .hero > div:first-child { text-align:center; }
+    .hero > div:first-child p { margin-left:auto; margin-right:auto; }
+    .button { display:inline-block; background:#4169e1; color:white; border-radius:99px; padding:13px 21px; font-weight:700; font-size:.9rem; transition:transform .2s,background .2s; }
+    .button:hover { transform:translateY(-2px); background:#3154bd; }
+    .button.alt { background:transparent; color:#4169e1; border:1px solid #4169e1; margin-left:10px; }
+    .hero-art { position:relative; min-height:410px; }
+    .blob { display:none; }
+    .portrait { position:absolute; width:66%; height:76%; left:17%; bottom:4%; border:4px solid #315d50; border-radius:44% 44% 18% 18%; background:#f6b3c5 url('joyce-portrait.png') center top/cover no-repeat; overflow:hidden; }
+    .portrait:before { display:none; }
+    .portrait:after { content:'✦'; position:absolute; right:10%; top:12%; color:#fff7c9; font-size:1.6rem; text-shadow:0 2px 8px #315d50; }
+    .face { display:none; }
+    .face:before { content:''; position:absolute; top:27%; left:0; width:100%; height:43%; background:radial-gradient(ellipse at 22% 48%,#fff 0 7%,#5a321f 8% 38%,#0b0b0b 39% 58%,transparent 59%),radial-gradient(ellipse at 78% 48%,#fff 0 7%,#5a321f 8% 38%,#0b0b0b 39% 58%,transparent 59%); }
+    .face:after { content:'⌣'; position:absolute; top:51%; left:41%; font-size:1.8rem; color:#a44d4b; }
+    .card { position:absolute; right:0; bottom:8px; min-width:120px; text-align:center; background:var(--paper); padding:10px 12px; border-radius:14px; box-shadow:0 10px 30px #354c3c24; font-size:.82rem; line-height:1.05; }
+    .card strong { display:block; font-family:'Playfair Display',serif; font-size:1.15rem; }
+    section { padding:75px 0; }
+    .section-label { color:var(--coral); font-weight:700; font-size:.8rem; text-transform:uppercase; letter-spacing:.14em; }
+    h2 { font-size:clamp(2.3rem,4vw,3.5rem); }
+    .about { display:grid; grid-template-columns:.75fr 1.25fr; gap:80px; border-top:1px solid var(--line); }
+    .about-copy p { color:var(--muted); font-size:1.08rem; }
+    .facts { display:grid; grid-template-columns:1fr 1.35fr 1fr; grid-template-rows:1fr 1fr 1fr; gap:18px; align-items:center; }
+    .fact { background:var(--paper); padding:24px; border:0; border-radius:50%; aspect-ratio:1; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; box-shadow:0 8px 20px #354c3c12; }
+    .fact .icon { font-size:1.5rem; }
+    .cover-thumb { width:54px; height:72px; object-fit:cover; object-position:center; border-radius:5px; display:block; box-shadow:0 4px 10px #55405a33; }
+    .facts .fact:nth-child(1) { grid-column:1; grid-row:1; }
+    .facts .fact:nth-child(2) { grid-column:3; grid-row:1; }
+    .facts .fact:nth-child(4) { grid-column:1; grid-row:3; }
+    .facts .fact:nth-child(5) { grid-column:3; grid-row:3; }
+    .fact.cover-card { grid-column:2; grid-row:1 / span 3; width:100%; aspect-ratio:1; border-radius:28px; background:#eee4f5; }
+    .cover-card .cover-thumb { width:70%; height:auto; aspect-ratio:2 / 3; border-radius:10px; margin-bottom:14px; }
+    .comment-card { border-radius:24px !important; background:#d9e5ff; padding:18px !important; }
+    .comment-card strong { font-size:.95rem; }
+    .comment-card input, .comment-card textarea { width:100%; border:0; border-radius:8px; padding:7px; margin-top:6px; font: .72rem 'DM Sans',sans-serif; }
+    .comment-card textarea { resize:none; height:42px; }
+    .comment-card button { border:0; border-radius:99px; padding:6px 11px; margin-top:7px; background:#4169e1; color:#fff; font:700 .7rem 'DM Sans',sans-serif; cursor:pointer; }
+    .comment-card button:hover { background:#3154bd; }
+    .comment-status { display:none; font-size:.68rem; color:#3154bd; margin:5px 0 0; }
+    .comment-status.show { display:block; }
+    .idea-board { margin-top:34px; padding:14px; border-radius:18px; background:#f7f1fb; box-shadow:0 10px 28px #5f3e8317; }
+    .about-area { display:grid; grid-template-columns:minmax(0,1fr) 300px; gap:28px; align-items:start; }
+    .about-area #ideas { display:block; grid-column:2; grid-row:1; margin-top:46px; }
+    .about-area .idea-board { margin-top:170px; grid-column:1; grid-row:1; align-self:start; }
+    .about-area .about { grid-column:1; grid-row:1; display:block; }
+    .about-area .about h2 { max-width:620px; }
+    .about-area .about-copy { max-width:100%; }
+    .about-area .facts { max-width:860px; margin-left:0; }
+    .idea-board h3 { margin:0 0 6px; color:#5f3e83; font-family:'Playfair Display',serif; font-size:1.25rem; }
+    .idea-board > p { margin:0 0 12px; color:var(--muted); font-size:.76rem; }
+    .inspired-note { display:none; }
+    .inspired-toggle { width:100%; border:0; background:none; color:#5f3e83; display:flex; justify-content:space-between; align-items:center; padding:0; cursor:pointer; font:700 .75rem 'DM Sans',sans-serif; text-align:left; }
+    .inspired-toggle .arrow { font-size:1.1rem; transition:transform .2s; }
+    .inspired-toggle.open .arrow { transform:rotate(90deg); }
+    .inspired-extra { display:none; margin-top:12px; padding:14px; border-radius:12px; background:#eee4f5; color:#5f3e83; }
+    .inspired-extra.show { display:block; animation:pop .3s ease both; }
+    .mini-slide { display:none; min-height:90px; }
+    .mini-slide.active { display:block; }
+    .mini-slide h4 { margin:0 0 7px; font-family:'Playfair Display',serif; font-size:1rem; }
+    .mini-slide p { margin:0; font-size:.78rem; }
+    .slide-nav { display:flex; justify-content:space-between; margin-top:12px; }
+    .slide-nav button { border:0; border-radius:99px; background:#fff; color:#5f3e83; cursor:pointer; padding:4px 9px; font-size:.8rem; }
+    .brain-toggle { border:0; background:none; color:#183b68; cursor:pointer; font:700 .8rem 'DM Sans',sans-serif; padding:8px 0; }
+    .brain-toggle .arrow { display:inline-block; margin-left:5px; transition:transform .2s; }
+    .brain-toggle.open .arrow { transform:rotate(90deg); }
+    .brain-extra { display:none; margin:12px auto 20px; max-width:470px; padding:18px; border-radius:16px; background:#eee4f5; color:#5f3e83; text-align:left; }
+    .brain-extra.show { display:block; animation:pop .3s ease both; }
+    .writing .brain-toggle, .writing .brain-extra { display:none !important; }
+    .idea-form { display:grid; grid-template-columns:1fr; gap:7px; margin-bottom:16px; }
+    .idea-form input, .idea-form textarea { border:1px solid #dccbea; border-radius:12px; background:#fff; padding:11px 12px; font: .88rem 'DM Sans',sans-serif; }
+    .idea-form textarea { min-height:44px; resize:vertical; }
+    .idea-form button { border:0; border-radius:12px; padding:9px 10px; background:#4169e1; color:#fff; font:700 .78rem 'DM Sans',sans-serif; cursor:pointer; }
+    .idea-feed { max-height:360px; overflow-y:auto; display:grid; gap:12px; padding-right:5px; }
+    .idea-post { background:#fff; border:1px solid #eadff1; border-radius:16px; padding:15px; }
+    .idea-post .post-head { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+    .idea-post strong { color:#315d50; }
+    .idea-post small { color:#9a8ba2; }
+    .idea-post p { margin:7px 0 10px; color:var(--ink); }
+    .post-actions { display:flex; gap:14px; }
+    .post-actions button { border:0; background:none; color:#77627f; padding:0; cursor:pointer; font: .78rem 'DM Sans',sans-serif; }
+    .post-actions button:hover, .post-actions button.active { color:#dc765f; }
+    @media (max-width:760px) { .idea-form { grid-template-columns:1fr; } .idea-form button { padding:11px; } }
+    .fact strong { display:block; margin-top:10px; font-family:'Playfair Display',serif; font-size:1.2rem; }
+    .fact small { color:var(--muted); }
+    .writing { position:relative; min-height:390px; background:#c8a2c8; color:#087f83; perspective:1000px; overflow:hidden; }
+    .writing > * { transition:opacity 1.25s ease; backface-visibility:hidden; }
+    .writing.flipped > .writing-grid { opacity:0; pointer-events:none; }
+    .writing-back { position:absolute; inset:0; padding:75px 8%; background:#c8a2c8; color:#087f83; opacity:0; pointer-events:none; box-shadow:inset 18px 0 28px -28px #5f3e83; }
+    .writing.flipped .writing-back { opacity:1; pointer-events:auto; }
+    .writing-back h3 { font:700 2rem 'Playfair Display',serif; margin:0 0 15px; }
+    .writing-back p { max-width:600px; font-size:1.05rem; }
+    .book-page { display:none; animation:pageTurn .8s cubic-bezier(.22,.61,.36,1) both; }
+    .book-page.active { display:block; }
+    .book-nav { display:flex; gap:10px; margin-top:26px; }
+    .book-nav button { border:0; border-radius:99px; padding:8px 14px; background:#4169e1; color:white; cursor:pointer; font-weight:700; }
+    @keyframes pageTurn { from { opacity:0; transform:rotateY(-14deg) translateX(12px); } to { opacity:1; transform:none; } }
+    .writing-toggle { display:flex; align-items:center; justify-content:space-between; width:100%; border:0; border-radius:18px; padding:16px 20px; background:#c8a2c8; color:#087f83; cursor:pointer; font:700 1rem 'DM Sans',sans-serif; }
+    .writing-toggle .arrow { transition:transform .2s; }
+    .writing-toggle.open .arrow { transform:rotate(90deg); }
+    .writing .section-label { color:#183b68; }
+    .writing-grid { display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:center; }
+    .writing-grid > div:first-child { text-align:center; }
+    .writing p { color:#d9e5d9; max-width:500px; }
+    .quote { font-family:'Playfair Display',serif; font-size:clamp(1.7rem,3vw,2.45rem); line-height:1.25; border-left:0; padding-left:0; }
+    .notebook { background:#e8d8f3; color:var(--ink); padding:28px; border-radius:12px; transform:rotate(2deg); box-shadow:8px 13px 0 #5f3e83; max-width:430px; margin:auto; }
+    .notebook .top { display:flex; justify-content:space-between; color:var(--coral); font-size:.75rem; font-weight:700; text-transform:uppercase; letter-spacing:.12em; }
+    .notebook h3 { font-family:'Playfair Display',serif; font-size:2rem; margin:35px 0 12px; }
+    .notebook p { color:var(--muted); font-size:.9rem; }
+    .secret { border:0; background:none; color:var(--coral); font:700 .78rem 'DM Sans',sans-serif; cursor:pointer; padding:8px 0; }
+    .secret:hover { text-decoration:underline; }
+    .surprise { display:none; color:var(--green) !important; font-weight:700; margin:8px 0 0 !important; }
+    .surprise.show { display:block; animation:pop .45s ease both; }
+    @keyframes pop { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
+    .confetti { position:fixed; z-index:5; pointer-events:none; animation:fall 1.2s ease-out forwards; font-size:1.4rem; }
+    @keyframes fall { from { transform:translateY(0) rotate(0); opacity:1; } to { transform:translateY(150px) rotate(220deg); opacity:0; } }
+    footer { padding:35px 0; display:flex; justify-content:space-between; color:var(--muted); font-size:.83rem; }
+    @media (max-width:760px) { .navlinks { display:none; } .hero,.about,.writing-grid,.about-area { grid-template-columns:1fr; gap:40px; } .hero { padding-top:25px; } .hero-art { min-height:330px; order:-1; } .about { gap:25px; grid-column:auto; grid-row:auto; } .about-area .idea-board, .about-area #ideas { margin-top:0; grid-column:auto; grid-row:auto; } .facts { margin-top:15px; grid-template-columns:1fr 1fr; grid-template-rows:auto; } .facts .fact, .facts .fact:nth-child(1), .facts .fact:nth-child(2), .facts .fact:nth-child(4), .fact.cover-card { grid-column:auto; grid-row:auto; width:auto; } .fact.cover-card { order:-1; grid-column:1 / -1; border-radius:24px; aspect-ratio:1.4; } .cover-card .cover-thumb { width:110px; } footer { display:block; } footer span { display:block; margin-top:8px; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav><a class="brand" href="#top">joyce<span>.</span></a><div class="navlinks"><a href="#about">About me</a><a href="#writing">My writing</a></div></nav>
+    <main id="top">
+      <section class="hero">
+        <div><div class="eyebrow">Hello, I'm Joyce</div><h1>Love, Laugh and <em>Cry about what you wrote.</em></h1><p>I'm a sixth grader, daydreamer, and novel writer. I make up worlds, give characters brave hearts, and fill pages with adventures.</p><a class="button" href="#writing">Read my notebook</a><a class="button alt" href="#about">Meet Joyce</a></div>
+        <div class="hero-art" aria-label="Illustration of Joyce"><div class="blob"></div><div class="portrait"><div class="face"></div></div><div class="card"><strong>My Goal</strong><br>Publish Book ✎</div></div>
+      </section>
+      <section class="about" id="about"><div><div class="section-label">A little about me</div><h2>Curious,<br>creative, & kind.</h2></div><div class="about-copy"><p>My little hobbies</p><div class="facts"><div class="fact"><div class="icon">🎒</div><strong>Grade 6</strong><small>Always learning something new</small></div><div class="fact"><div class="icon">📚</div><strong>Novel writer</strong><small>Building stories from scratch</small></div><div class="fact cover-card"><img class="cover-thumb" src="novel-cover.png" alt="Joyce's novel cover, Doves"><strong>My Novel Cover</strong><small>My First Novel</small></div><div class="fact"><div class="icon">🌈</div><strong>Big imagination</strong><small>My favorite superpower</small></div><div class="fact comment-card"><div class="icon">💬</div><strong>Comment section</strong><form onsubmit="addComment(event)"><input id="comment-name" aria-label="Your name" placeholder="Your name"><textarea id="comment-idea" aria-label="Your idea" placeholder="Share an idea..."></textarea><button type="submit">Post idea</button><p id="comment-status" class="comment-status">Thanks for your idea!</p></form></div></div></div></section>
+      <section class="idea-board" id="ideas"><h3>Idea wall</h3><p>Share a thought, a story idea, or a kind comment with other readers.</p><form class="idea-form" onsubmit="postIdea(event)"><input id="idea-name" aria-label="Your name" placeholder="Your name" required><textarea id="idea-text" aria-label="Your idea" placeholder="Write your idea..." required></textarea><button type="submit">Post idea</button></form><div class="idea-feed" id="idea-feed"><article class="idea-post"><div class="post-head"><strong>Mia</strong><small>just now</small></div><p>What if Alice discovers that her notebook can make the things she writes come true?</p><div class="post-actions"><button onclick="reactToPost(this,'♡')">♡ 3</button><button onclick="reactToPost(this,'♥')">♥ 5</button><button onclick="replyToPost(this)">Reply</button></div></article><article class="idea-post"><div class="post-head"><strong>Sam</strong><small>today</small></div><p>I think the secret magic should only work when Alice is brave.</p><div class="post-actions"><button onclick="reactToPost(this,'♡')">♡ 2</button><button onclick="reactToPost(this,'♥')">♥ 4</button><button onclick="replyToPost(this)">Reply</button></div></article></div></section>
+      <section class="writing" id="writing"><div class="writing-grid"><div><div class="section-label">In My Brain</div><div class="quote">“Write down what you have in mind and reinforce it.”</div><p>My favorite part of writing is watching a character become real. I’m working on a novel full of friendship, secrets, and a little bit of magic.</p><a class="button" style="background:#fa8072;color:#ffd1dc" href="#top">Back to the beginning ↑</a></div><div class="notebook"><div class="top"><span>Joyce's little tease</span></div><h3>Well...</h3><p>Alice loves school, but can she survive without enough magic? What will she find out if she's desperate?</p><button class="secret" onclick="revealSurprise()">✦ tap the tiny star for a surprise</button><p id="surprise" class="surprise">Surprise! You now saw my little tease from the story!</p><div style="text-align:right;font-size:1.5rem">✧ ✍︎</div></div></div></section>
+    </main>
+    <footer><span>Made with imagination by Joyce</span><span>© 2025 · Keep creating</span></footer>
+  </div>
+  <script>
+    (function arrangeIdeaWall() {
+      const about = document.getElementById('about');
+      const ideas = document.getElementById('ideas');
+      if (!about || !ideas) return;
+      const area = document.createElement('div');
+      area.className = 'about-area';
+      about.parentNode.insertBefore(area, about);
+      area.append(about, ideas);
+      const inspired = document.createElement('div');
+      inspired.className = 'inspired-note';
+      inspired.innerHTML = '<button class="inspired-toggle" onclick="toggleInspired(this)"><span>Inspired by: The Missing Magic of Sparrow Xia</span><span class="arrow">→</span></button><div class="inspired-extra"><div class="mini-slide active"><h4>My book cover inspiration</h4><p>Magic, Lights, Books, and Potions</p></div><div class="mini-slide"><h4>My favorite story ingredients</h4><p>Curiosity, friendship, mystery, and a little bit of courage.</p></div><div class="mini-slide"><h4>What I want readers to feel</h4><p>Wonder, excitement, and the urge to keep turning the page.</p></div><div class="slide-nav"><button onclick="changeSlide(this,-1)">←</button><button onclick="changeSlide(this,1)">→</button></div></div>';
+      ideas.appendChild(inspired);
+    })();
+    function toggleInspired(button) {
+      button.classList.toggle('open');
+      button.nextElementSibling.classList.toggle('show');
+    }
+    (function addBrainSlideshow() {
+      const writing = document.querySelector('.writing');
+      if (!writing) return;
+      const opener = document.createElement('button');
+      opener.className = 'writing-toggle';
+      opener.innerHTML = '<span>In My Brain — open my writing slideshow</span><span class="arrow">→</span>';
+      const back = document.createElement('div');
+      back.className = 'writing-back';
+      back.innerHTML = '<div class="book-page active"><h3>My book cover inspiration</h3><p>Magic, Lights, Books, and Potions</p><p>These are the ideas that help me imagine magical worlds and build stories of my own.</p></div><div class="book-page"><h3>What I love to write</h3><p>Friendship, secrets, brave choices, and characters who discover they are stronger than they thought.</p></div><div class="book-page"><h3>My writing dream</h3><p>To finish my novel, share it with readers, and make them feel a little bit of magic.</p></div><div class="book-nav"><button onclick="nextBookPage(-1)">← Previous</button><button onclick="nextBookPage(1)">Next →</button><button class="button" style="background:#fa8072;color:#ffd1dc" onclick="document.querySelector(\'.writing\').classList.remove(\'flipped\');document.querySelector(\'.writing-toggle\').classList.remove(\'open\')">Flip back</button></div>';
+      writing.appendChild(back);
+      opener.onclick = function() { opener.classList.toggle('open'); writing.classList.toggle('flipped'); };
+      writing.parentNode.insertBefore(opener, writing);
+      const label = document.querySelector('.writing .section-label');
+      if (!label) return;
+      const toggle = document.createElement('button');
+      toggle.className = 'brain-toggle';
+      toggle.innerHTML = 'Open more about my writing <span class="arrow">→</span>';
+      const panel = document.createElement('div');
+      panel.className = 'brain-extra';
+      panel.innerHTML = '<div class="mini-slide active"><h4>My book cover inspiration</h4><p>Magic, Lights, Books, and Potions</p></div><div class="mini-slide"><h4>My favorite story ingredients</h4><p>Curiosity, friendship, mystery, and a little bit of courage.</p></div><div class="mini-slide"><h4>What I want readers to feel</h4><p>Wonder, excitement, and the urge to keep turning the page.</p></div><div class="slide-nav"><button onclick="changeSlide(this,-1)">←</button><button onclick="changeSlide(this,1)">→</button></div>';
+      toggle.onclick = function() { toggle.classList.toggle('open'); panel.classList.toggle('show'); };
+      label.after(toggle, panel);
+    })();
+    function changeSlide(button, direction) {
+      const box = button.closest('.inspired-extra, .brain-extra');
+      const slides = [...box.querySelectorAll('.mini-slide')];
+      const current = slides.findIndex(slide => slide.classList.contains('active'));
+      slides[current].classList.remove('active');
+      slides[(current + direction + slides.length) % slides.length].classList.add('active');
+    }
+    function nextBookPage(direction) {
+      const pages = [...document.querySelectorAll('.writing-back .book-page')];
+      const current = pages.findIndex(page => page.classList.contains('active'));
+      pages[current].classList.remove('active');
+      pages[(current + direction + pages.length) % pages.length].classList.add('active');
+    }
+    function addComment(event) {
+      event.preventDefault();
+      const idea = document.getElementById('comment-idea').value.trim();
+      if (!idea) return;
+      document.getElementById('comment-status').classList.add('show');
+      document.getElementById('comment-idea').value = '';
+    }
+    function postIdea(event) {
+      event.preventDefault();
+      const name = document.getElementById('idea-name').value.trim();
+      const idea = document.getElementById('idea-text').value.trim();
+      if (!name || !idea) return;
+      const post = document.createElement('article');
+      post.className = 'idea-post';
+      post.innerHTML = '<div class="post-head"><strong></strong><small>just now</small></div><p></p><div class="post-actions"><button onclick="reactToPost(this,\'♡\')">♡ 0</button><button onclick="reactToPost(this,\'♥\')">♥ 0</button><button onclick="replyToPost(this)">Reply</button></div>';
+      post.querySelector('strong').textContent = name;
+      post.querySelector('p').textContent = idea;
+      document.getElementById('idea-feed').prepend(post);
+      event.target.reset();
+    }
+    function reactToPost(button, symbol) {
+      const count = Number(button.textContent.replace(/[^0-9]/g, '') || 0) + 1;
+      button.textContent = symbol + ' ' + count;
+      button.classList.add('active');
+    }
+    function replyToPost(button) {
+      if (button.closest('.idea-post').querySelector('.reply-form')) return;
+      const form = document.createElement('form');
+      form.className = 'reply-form';
+      form.style.cssText = 'display:flex;gap:6px;margin-top:9px';
+      form.innerHTML = '<input required placeholder="Write your reply..." aria-label="Write your reply" style="flex:1;border:1px solid #dccbea;border-radius:8px;padding:7px;font: .76rem DM Sans,sans-serif"><button type="submit" style="border:0;border-radius:8px;padding:7px 10px;background:#4169e1;color:white;font:700 .74rem DM Sans,sans-serif">Send</button>';
+      form.onsubmit = function(event) {
+        event.preventDefault();
+        const post = button.closest('.idea-post');
+        const reply = document.createElement('div');
+        reply.style.cssText = 'margin-top:9px;padding:8px 10px;border-radius:10px;background:#eef3ff;color:#3154bd;font-size:.78rem';
+        reply.textContent = 'Your reply: ' + form.querySelector('input').value;
+        const authorNote = document.createElement('div');
+        authorNote.style.cssText = 'margin-top:6px;padding:8px 10px;border-radius:10px;background:#f7f1fb;color:#5f3e83;font-size:.78rem';
+        authorNote.textContent = 'The author has replied to your comment';
+        form.replaceWith(reply, authorNote);
+      };
+      button.closest('.idea-post').appendChild(form);
+      form.querySelector('input').focus();
+    }
+    function revealSurprise() {
+      document.getElementById('surprise').classList.add('show');
+      ['✦','✧','✿','★','•','✦'].forEach((symbol, i) => {
+        const bit = document.createElement('span'); bit.className = 'confetti'; bit.textContent = symbol;
+        bit.style.left = (42 + Math.random() * 16) + 'vw'; bit.style.top = (42 + Math.random() * 12) + 'vh';
+        bit.style.color = ['#dc765f','#f6b19a','#fff7c9','#b8cbb8'][i % 4]; bit.style.animationDelay = (i * .06) + 's';
+        document.body.appendChild(bit); setTimeout(() => bit.remove(), 1500);
+      });
+    }
+  </script>
+</body>
+</html>
