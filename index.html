@@ -9,13 +9,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root { --ink:#1f2a2b; --muted:#667477; --cream:#fbf8f0; --paper:#fffdf8; --sage:#b8cbb8; --green:#315d50; --coral:#dc765f; --line:#dfe4da; }
+    :root { --ink:#3f3832; --muted:#786d65; --cream:#f6efe3; --paper:#fffaf0; --sage:#b8cbb8; --green:#315d50; --coral:#b86f61; --line:#dfd1bd; }
     * { box-sizing:border-box; }
     html { scroll-behavior:smooth; }
-    body { margin:0; color:var(--ink); background:var(--cream); font-family:'DM Sans',sans-serif; line-height:1.6; }
+    body { margin:0; color:var(--ink); background:var(--cream); background-image:radial-gradient(#d9c8ae 0.7px, transparent 0.7px); background-size:18px 18px; font-family:'DM Sans',sans-serif; line-height:1.6; }
     a { color:inherit; text-decoration:none; }
     .wrap { max-width:1120px; margin:auto; padding:0 28px; }
-    nav { display:flex; align-items:center; justify-content:space-between; padding:24px 0; }
+    nav { display:flex; align-items:center; justify-content:space-between; padding:24px 0 18px; border-bottom:1px solid var(--line); }
     .brand { font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:800; letter-spacing:-.03em; }
     .brand span { color:var(--coral); }
     .navlinks { display:flex; gap:28px; color:var(--muted); font-size:.9rem; }
@@ -28,7 +28,7 @@
     .hero p { font-size:1.12rem; color:var(--muted); max-width:520px; margin:25px 0 30px; }
     .hero > div:first-child { text-align:center; }
     .hero > div:first-child p { margin-left:auto; margin-right:auto; }
-    .button { display:inline-block; background:#4169e1; color:white; border-radius:99px; padding:13px 21px; font-weight:700; font-size:.9rem; transition:transform .2s,background .2s; }
+    .button { display:inline-block; background:var(--green); color:white; border-radius:99px; padding:13px 21px; font-weight:700; font-size:.9rem; transition:transform .2s,background .2s; box-shadow:0 5px 0 #24483e; }
     .button:hover { transform:translateY(-2px); background:#3154bd; }
     .button.alt { background:transparent; color:#4169e1; border:1px solid #4169e1; margin-left:10px; }
     .hero-art { position:relative; min-height:410px; }
@@ -47,7 +47,7 @@
     .about { display:grid; grid-template-columns:.75fr 1.25fr; gap:80px; border-top:1px solid var(--line); }
     .about-copy p { color:var(--muted); font-size:1.08rem; }
     .facts { display:grid; grid-template-columns:1fr 1.35fr 1fr; grid-template-rows:1fr 1fr 1fr; gap:18px; align-items:center; }
-    .fact { background:var(--paper); padding:24px; border:0; border-radius:50%; aspect-ratio:1; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; box-shadow:0 8px 20px #354c3c12; }
+    .fact { background:var(--paper); padding:24px; border:1px solid var(--line); border-radius:50%; aspect-ratio:1; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; box-shadow:0 8px 20px #6b50301c; }
     .fact .icon { font-size:1.5rem; }
     .cover-thumb { width:54px; height:72px; object-fit:cover; object-position:center; border-radius:5px; display:block; box-shadow:0 4px 10px #55405a33; }
     .facts .fact:nth-child(1) { grid-column:1; grid-row:1; }
@@ -64,10 +64,9 @@
     .comment-card button:hover { background:#3154bd; }
     .comment-status { display:none; font-size:.68rem; color:#3154bd; margin:5px 0 0; }
     .comment-status.show { display:block; }
-    .idea-board { margin-top:34px; padding:14px; border-radius:18px; background:#f7f1fb; box-shadow:0 10px 28px #5f3e8317; }
+    .idea-board { margin-top:34px; padding:18px; border-radius:22px; background:#fff8e9; border:1px solid #dfc7a6; box-shadow:5px 7px 0 #d9c3a1, 0 10px 28px #5f3e8317; }
     .about-area { display:grid; grid-template-columns:minmax(0,1fr) 300px; gap:28px; align-items:start; }
-    .about-area #ideas { display:block; grid-column:2; grid-row:1; margin-top:46px; }
-    .about-area .idea-board { margin-top:170px; grid-column:1; grid-row:1; align-self:start; }
+    .about-area #ideas { display:block; grid-column:2; grid-row:1; margin-top:0; align-self:center; transform:translateY(120px); }
     .about-area .about { grid-column:1; grid-row:1; display:block; }
     .about-area .about h2 { max-width:620px; }
     .about-area .about-copy { max-width:100%; }
@@ -96,6 +95,8 @@
     .idea-form input, .idea-form textarea { border:1px solid #dccbea; border-radius:12px; background:#fff; padding:11px 12px; font: .88rem 'DM Sans',sans-serif; }
     .idea-form textarea { min-height:44px; resize:vertical; }
     .idea-form button { border:0; border-radius:12px; padding:9px 10px; background:#4169e1; color:#fff; font:700 .78rem 'DM Sans',sans-serif; cursor:pointer; }
+    .idea-status { display:none; margin:0 0 12px; padding:9px 12px; border-radius:10px; background:#D0F0C0; color:#315d50; font-size:.8rem; font-weight:700; }
+    .idea-status.show { display:block; animation:pop .3s ease both; }
     .idea-feed { max-height:360px; overflow-y:auto; display:grid; gap:12px; padding-right:5px; }
     .idea-post { background:#fff; border:1px solid #eadff1; border-radius:16px; padding:15px; }
     .idea-post .post-head { display:flex; align-items:center; justify-content:space-between; gap:12px; }
@@ -108,27 +109,28 @@
     @media (max-width:760px) { .idea-form { grid-template-columns:1fr; } .idea-form button { padding:11px; } }
     .fact strong { display:block; margin-top:10px; font-family:'Playfair Display',serif; font-size:1.2rem; }
     .fact small { color:var(--muted); }
-    .writing { position:relative; min-height:390px; background:#c8a2c8; color:#087f83; perspective:1000px; overflow:hidden; }
+    .writing { position:relative; min-height:390px; background:#BE93D4; color:#315d50; border-radius:22px; border:1px solid #c3ae95; box-shadow:7px 8px 0 #8E6AAE; perspective:1000px; overflow:hidden; }
     .writing > * { transition:opacity 1.25s ease; backface-visibility:hidden; }
     .writing.flipped > .writing-grid { opacity:0; pointer-events:none; }
-    .writing-back { position:absolute; inset:0; padding:75px 8%; background:#c8a2c8; color:#087f83; opacity:0; pointer-events:none; box-shadow:inset 18px 0 28px -28px #5f3e83; }
+    .writing-back { position:absolute; inset:0; padding:75px 8%; background:#BE93D4; color:#087f83; opacity:0; pointer-events:none; box-shadow:inset 18px 0 28px -28px #5f3e83; }
     .writing.flipped .writing-back { opacity:1; pointer-events:auto; }
     .writing-back h3 { font:700 2rem 'Playfair Display',serif; margin:0 0 15px; }
     .writing-back p { max-width:600px; font-size:1.05rem; }
+    .slide-paragraph { color:#e0ffff !important; }
     .book-page { display:none; animation:pageTurn .8s cubic-bezier(.22,.61,.36,1) both; }
     .book-page.active { display:block; }
     .book-nav { display:flex; gap:10px; margin-top:26px; }
     .book-nav button { border:0; border-radius:99px; padding:8px 14px; background:#4169e1; color:white; cursor:pointer; font-weight:700; }
     @keyframes pageTurn { from { opacity:0; transform:rotateY(-14deg) translateX(12px); } to { opacity:1; transform:none; } }
-    .writing-toggle { display:flex; align-items:center; justify-content:space-between; width:100%; border:0; border-radius:18px; padding:16px 20px; background:#c8a2c8; color:#087f83; cursor:pointer; font:700 1rem 'DM Sans',sans-serif; }
+    .writing-toggle { display:flex; align-items:center; justify-content:space-between; width:100%; margin-bottom:14px; border:0; border-radius:18px; padding:16px 20px; background:#9867C5; color:#fff; cursor:pointer; font:700 1rem 'DM Sans',sans-serif; }
     .writing-toggle .arrow { transition:transform .2s; }
     .writing-toggle.open .arrow { transform:rotate(90deg); }
     .writing .section-label { color:#183b68; }
     .writing-grid { display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:center; }
     .writing-grid > div:first-child { text-align:center; }
     .writing p { color:#d9e5d9; max-width:500px; }
-    .quote { font-family:'Playfair Display',serif; font-size:clamp(1.7rem,3vw,2.45rem); line-height:1.25; border-left:0; padding-left:0; }
-    .notebook { background:#e8d8f3; color:var(--ink); padding:28px; border-radius:12px; transform:rotate(2deg); box-shadow:8px 13px 0 #5f3e83; max-width:430px; margin:auto; }
+    .quote { font-family:'Playfair Display',serif; font-size:clamp(1.7rem,3vw,2.45rem); line-height:1.25; border-left:0; padding-left:0; color:#00637C; }
+    .notebook { background:#e8d8f3; color:var(--ink); padding:28px; border-radius:12px; transform:rotate(2deg); box-shadow:8px 13px 0 #b39acb; max-width:430px; margin:auto; }
     .notebook .top { display:flex; justify-content:space-between; color:var(--coral); font-size:.75rem; font-weight:700; text-transform:uppercase; letter-spacing:.12em; }
     .notebook h3 { font-family:'Playfair Display',serif; font-size:2rem; margin:35px 0 12px; }
     .notebook p { color:var(--muted); font-size:.9rem; }
@@ -153,7 +155,7 @@
       </section>
       <section class="about" id="about"><div><div class="section-label">A little about me</div><h2>Curious,<br>creative, & kind.</h2></div><div class="about-copy"><p>My little hobbies</p><div class="facts"><div class="fact"><div class="icon">🎒</div><strong>Grade 6</strong><small>Always learning something new</small></div><div class="fact"><div class="icon">📚</div><strong>Novel writer</strong><small>Building stories from scratch</small></div><div class="fact cover-card"><img class="cover-thumb" src="novel-cover.png" alt="Joyce's novel cover, Doves"><strong>My Novel Cover</strong><small>My First Novel</small></div><div class="fact"><div class="icon">🌈</div><strong>Big imagination</strong><small>My favorite superpower</small></div><div class="fact comment-card"><div class="icon">💬</div><strong>Comment section</strong><form onsubmit="addComment(event)"><input id="comment-name" aria-label="Your name" placeholder="Your name"><textarea id="comment-idea" aria-label="Your idea" placeholder="Share an idea..."></textarea><button type="submit">Post idea</button><p id="comment-status" class="comment-status">Thanks for your idea!</p></form></div></div></div></section>
       <section class="idea-board" id="ideas"><h3>Idea wall</h3><p>Share a thought, a story idea, or a kind comment with other readers.</p><form class="idea-form" onsubmit="postIdea(event)"><input id="idea-name" aria-label="Your name" placeholder="Your name" required><textarea id="idea-text" aria-label="Your idea" placeholder="Write your idea..." required></textarea><button type="submit">Post idea</button></form><div class="idea-feed" id="idea-feed"><article class="idea-post"><div class="post-head"><strong>Mia</strong><small>just now</small></div><p>What if Alice discovers that her notebook can make the things she writes come true?</p><div class="post-actions"><button onclick="reactToPost(this,'♡')">♡ 3</button><button onclick="reactToPost(this,'♥')">♥ 5</button><button onclick="replyToPost(this)">Reply</button></div></article><article class="idea-post"><div class="post-head"><strong>Sam</strong><small>today</small></div><p>I think the secret magic should only work when Alice is brave.</p><div class="post-actions"><button onclick="reactToPost(this,'♡')">♡ 2</button><button onclick="reactToPost(this,'♥')">♥ 4</button><button onclick="replyToPost(this)">Reply</button></div></article></div></section>
-      <section class="writing" id="writing"><div class="writing-grid"><div><div class="section-label">In My Brain</div><div class="quote">“Write down what you have in mind and reinforce it.”</div><p>My favorite part of writing is watching a character become real. I’m working on a novel full of friendship, secrets, and a little bit of magic.</p><a class="button" style="background:#fa8072;color:#ffd1dc" href="#top">Back to the beginning ↑</a></div><div class="notebook"><div class="top"><span>Joyce's little tease</span></div><h3>Well...</h3><p>Alice loves school, but can she survive without enough magic? What will she find out if she's desperate?</p><button class="secret" onclick="revealSurprise()">✦ tap the tiny star for a surprise</button><p id="surprise" class="surprise">Surprise! You now saw my little tease from the story!</p><div style="text-align:right;font-size:1.5rem">✧ ✍︎</div></div></div></section>
+      <section class="writing" id="writing"><div class="writing-grid"><div><div class="section-label">In My Brain</div><div class="quote">“Write down what you have in mind and reinforce it.”</div><p>My favorite part of writing is watching a character become real. I’m working on a novel full of friendship, secrets, and a little bit of magic.</p><a class="button" style="background:#D0F0C0;color:#087f83" href="#top">Back to the beginning ↑</a></div><div class="notebook"><div class="top"><span>Joyce's little tease</span></div><h3>Well...</h3><p>Alice loves school, but can she survive without enough magic? What will she find out if she's desperate?</p><button class="secret" onclick="revealSurprise()">✦ tap the tiny star for a surprise</button><p id="surprise" class="surprise">Surprise! You now saw my little tease from the story!</p><div style="text-align:right;font-size:1.5rem">✧ ✍︎</div></div></div></section>
     </main>
     <footer><span>Made with imagination by Joyce</span><span>© 2025 · Keep creating</span></footer>
   </div>
@@ -162,6 +164,13 @@
       const about = document.getElementById('about');
       const ideas = document.getElementById('ideas');
       if (!about || !ideas) return;
+      ideas.querySelector('h3').textContent = 'Idea Well';
+      const status = document.createElement('p');
+      status.id = 'idea-status';
+      status.className = 'idea-status';
+      status.setAttribute('role', 'status');
+      status.textContent = 'Someone shared a new idea!';
+      ideas.querySelector('.idea-form').after(status);
       const area = document.createElement('div');
       area.className = 'about-area';
       about.parentNode.insertBefore(area, about);
@@ -180,10 +189,12 @@
       if (!writing) return;
       const opener = document.createElement('button');
       opener.className = 'writing-toggle';
+      opener.setAttribute('aria-label', 'Open the In My Brain slideshow');
+      opener.title = 'Open slideshow';
       opener.innerHTML = '<span>In My Brain — open my writing slideshow</span><span class="arrow">→</span>';
       const back = document.createElement('div');
       back.className = 'writing-back';
-      back.innerHTML = '<div class="book-page active"><h3>My book cover inspiration</h3><p>Magic, Lights, Books, and Potions</p><p>These are the ideas that help me imagine magical worlds and build stories of my own.</p></div><div class="book-page"><h3>What I love to write</h3><p>Friendship, secrets, brave choices, and characters who discover they are stronger than they thought.</p></div><div class="book-page"><h3>My characters</h3><p>Alicandar, nickname: Alice, AKA: Ali.<br>Allestor.<br>Jason.<br>Kasy: person who stole Alice's friend.<br>Riley: Alice's friend.</p></div><div class="book-nav"><button onclick="nextBookPage(-1)">← Previous</button><button onclick="nextBookPage(1)">Next →</button><button class="button" style="background:#fa8072;color:#ffd1dc" onclick="document.querySelector(\'.writing\').classList.remove(\'flipped\');document.querySelector(\'.writing-toggle\').classList.remove(\'open\')">Flip back</button></div>';
+      back.innerHTML = '<div class="book-page active"><h3>My book cover inspiration</h3><p class="slide-paragraph">Magic, Lights, Books, and Potions</p><p class="slide-paragraph">These are the ideas that help me imagine magical worlds and build stories of my own.</p></div><div class="book-page"><h3>My characters</h3><p class="slide-paragraph">Alicandar, nickname: Alice AKA: Ali.<br>Allestor: Jason\'s best friend<br>Jason: Allestor\'s best friend<br>Kasy: person who stole Alice\'s friend.<br>Riley: Alice\'s friend.</p></div><div class="book-page"><h3>Loves Books More Than Anything! :P</h3><p class="slide-paragraph">Stories, adventures, and new worlds are always waiting between the pages.</p></div><div class="book-page"><h3>My favorite story ingredients</h3><p class="slide-paragraph">Curiosity, friendship, mystery, and a little bit of courage.</p></div><div class="book-nav"><button onclick="nextBookPage(-1)">← Previous</button><button onclick="nextBookPage(1)">Next →</button><button class="button" style="background:#fa8072;color:#ffd1dc" onclick="document.querySelector(\'.writing\').classList.remove(\'flipped\');document.querySelector(\'.writing-toggle\').classList.remove(\'open\')">Flip back</button></div>';
       writing.appendChild(back);
       opener.onclick = function() { opener.classList.toggle('open'); writing.classList.toggle('flipped'); };
       writing.parentNode.insertBefore(opener, writing);
@@ -229,6 +240,7 @@
       post.querySelector('strong').textContent = name;
       post.querySelector('p').textContent = idea;
       document.getElementById('idea-feed').prepend(post);
+      document.getElementById('idea-status').classList.add('show');
       event.target.reset();
     }
     function reactToPost(button, symbol) {
