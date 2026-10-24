@@ -171,6 +171,13 @@
       status.setAttribute('role', 'status');
       status.textContent = 'Someone shared a new idea!';
       ideas.querySelector('.idea-form').after(status);
+      const emailField = document.createElement('input');
+      emailField.id = 'comment-email';
+      emailField.type = 'email';
+      emailField.required = true;
+      emailField.setAttribute('aria-label', 'Your email');
+      emailField.placeholder = 'Your email';
+      document.getElementById('comment-name').after(emailField);
       const area = document.createElement('div');
       area.className = 'about-area';
       about.parentNode.insertBefore(area, about);
@@ -224,8 +231,13 @@
     }
     function addComment(event) {
       event.preventDefault();
+      const name = document.getElementById('comment-name').value.trim();
+      const email = document.getElementById('comment-email').value.trim();
       const idea = document.getElementById('comment-idea').value.trim();
-      if (!idea) return;
+      if (!name || !email || !idea) return;
+      const subject = encodeURIComponent('A new idea for Joyce\'s website');
+      const body = encodeURIComponent('From: ' + name + ' (' + email + ')\n\n' + idea);
+      window.open('https://mail.google.com/mail/?view=cm&fs=1&to=joycepi2021@gmail.com&su=' + subject + '&body=' + body, '_blank');
       document.getElementById('comment-status').classList.add('show');
       document.getElementById('comment-idea').value = '';
     }
