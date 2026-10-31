@@ -12,7 +12,7 @@
     :root { --ink:#3f3832; --muted:#786d65; --cream:#f6efe3; --paper:#fffaf0; --sage:#b8cbb8; --green:#315d50; --coral:#b86f61; --line:#dfd1bd; }
     * { box-sizing:border-box; }
     html { scroll-behavior:smooth; }
-    body { margin:0; color:var(--ink); background:var(--cream); background-image:radial-gradient(#d9c8ae 0.7px, transparent 0.7px); background-size:18px 18px; font-family:'DM Sans',sans-serif; line-height:1.6; }
+    body { margin:0; color:var(--ink); background:linear-gradient(90deg, #e6c8f5 0%, #c9c9f7 50%, #b9e3fa 100%); font-family:'DM Sans',sans-serif; line-height:1.6; }
     a { color:inherit; text-decoration:none; }
     .wrap { max-width:1120px; margin:auto; padding:0 28px; }
     nav { display:flex; align-items:center; justify-content:space-between; padding:24px 0 18px; border-bottom:1px solid var(--line); }
@@ -33,7 +33,7 @@
     .button.alt { background:transparent; color:#4169e1; border:1px solid #4169e1; margin-left:10px; }
     .hero-art { position:relative; min-height:410px; }
     .blob { display:none; }
-    .portrait { position:absolute; width:66%; height:76%; left:17%; bottom:4%; border:4px solid #315d50; border-radius:44% 44% 18% 18%; background:#f6b3c5 url('joyce-portrait.png') center top/cover no-repeat; overflow:hidden; }
+    .portrait { position:absolute; width:66%; height:76%; left:17%; bottom:4%; border:4px solid #b84f75; border-radius:44% 44% 18% 18%; background:#f6b3c5 url('joyce-portrait.png') center top/cover no-repeat; overflow:hidden; }
     .portrait:before { display:none; }
     .portrait:after { content:'✦'; position:absolute; right:10%; top:12%; color:#fff7c9; font-size:1.6rem; text-shadow:0 2px 8px #315d50; }
     .face { display:none; }
@@ -64,7 +64,7 @@
     .comment-card button:hover { background:#3154bd; }
     .comment-status { display:none; font-size:.68rem; color:#3154bd; margin:5px 0 0; }
     .comment-status.show { display:block; }
-    .idea-board { margin-top:34px; padding:18px; border-radius:22px; background:#fff8e9; border:1px solid #dfc7a6; box-shadow:5px 7px 0 #d9c3a1, 0 10px 28px #5f3e8317; }
+    .idea-board { margin-top:34px; padding:18px; border-radius:22px; background:#fde2e4; border:1px solid #dfc7a6; box-shadow:5px 7px 0 #e8a8b0, 0 10px 28px #5f3e8317; }
     .about-area { display:grid; grid-template-columns:minmax(0,1fr) 300px; gap:28px; align-items:start; }
     .about-area #ideas { display:block; grid-column:2; grid-row:1; margin-top:0; align-self:center; transform:translateY(120px); }
     .about-area .about { grid-column:1; grid-row:1; display:block; }
@@ -93,16 +93,16 @@
     .writing .brain-toggle, .writing .brain-extra { display:none !important; }
     .idea-form { display:grid; grid-template-columns:1fr; gap:7px; margin-bottom:16px; }
     .idea-form input, .idea-form textarea { border:1px solid #dccbea; border-radius:12px; background:#fff; padding:11px 12px; font: .88rem 'DM Sans',sans-serif; }
-    .idea-form textarea { min-height:44px; resize:vertical; }
+    .idea-form textarea { min-height:44px; max-height:180px; resize:none; overflow-y:auto; }
     .idea-form button { border:0; border-radius:12px; padding:9px 10px; background:#4169e1; color:#fff; font:700 .78rem 'DM Sans',sans-serif; cursor:pointer; }
     .idea-status { display:none; margin:0 0 12px; padding:9px 12px; border-radius:10px; background:#D0F0C0; color:#315d50; font-size:.8rem; font-weight:700; }
     .idea-status.show { display:block; animation:pop .3s ease both; }
     .idea-feed { max-height:360px; overflow-y:auto; display:grid; gap:12px; padding-right:5px; }
-    .idea-post { background:#fff; border:1px solid #eadff1; border-radius:16px; padding:15px; }
+    .idea-post { width:100%; min-width:0; background:#fff; border:1px solid #eadff1; border-radius:16px; padding:15px; overflow-wrap:anywhere; }
     .idea-post .post-head { display:flex; align-items:center; justify-content:space-between; gap:12px; }
     .idea-post strong { color:#315d50; }
     .idea-post small { color:#9a8ba2; }
-    .idea-post p { margin:7px 0 10px; color:var(--ink); }
+    .idea-post p { margin:7px 0 10px; color:var(--ink); white-space:normal; overflow-wrap:anywhere; word-break:break-word; }
     .post-actions { display:flex; gap:14px; }
     .post-actions button { border:0; background:none; color:#77627f; padding:0; cursor:pointer; font: .78rem 'DM Sans',sans-serif; }
     .post-actions button:hover, .post-actions button.active { color:#dc765f; }
@@ -114,8 +114,9 @@
     .writing.flipped > .writing-grid { opacity:0; pointer-events:none; }
     .writing-back { position:absolute; inset:0; padding:75px 8%; background:#BE93D4; color:#087f83; opacity:0; pointer-events:none; box-shadow:inset 18px 0 28px -28px #5f3e83; }
     .writing.flipped .writing-back { opacity:1; pointer-events:auto; }
-    .writing-back h3 { font:700 2rem 'Playfair Display',serif; margin:0 0 15px; }
+    .writing-back h3 { font:700 2rem 'Playfair Display',serif; margin:0 0 15px; color:#0041c2; }
     .writing-back p { max-width:600px; font-size:1.05rem; }
+    .writing-back .button { background:#787ff6 !important; }
     .slide-paragraph { color:#e0ffff !important; }
     .book-page { display:none; animation:pageTurn .8s cubic-bezier(.22,.61,.36,1) both; }
     .book-page.active { display:block; }
@@ -147,7 +148,7 @@
 </head>
 <body>
   <div class="wrap">
-    <nav><a class="brand" href="#top">joyce<span>.</span></a><div class="navlinks"><a href="#about">About me</a><a href="#writing">My writing</a></div></nav>
+    <nav><a class="brand" href="#top">Joyce<span>.</span></a><div class="navlinks"><a href="#about">About me</a><a href="#writing">My writing</a></div></nav>
     <main id="top">
       <section class="hero">
         <div><div class="eyebrow">Hello, I'm Joyce</div><h1>Love, Laugh and <em>Cry about what you wrote.</em></h1><p>I'm a sixth grader, daydreamer, and novel writer. I make up worlds, give characters brave hearts, and fill pages with adventures.</p><a class="button" href="#writing">Read my notebook</a><a class="button alt" href="#about">Meet Joyce</a></div>
@@ -178,6 +179,11 @@
       emailField.setAttribute('aria-label', 'Your email');
       emailField.placeholder = 'Your email';
       document.getElementById('comment-name').after(emailField);
+      const ideaText = document.getElementById('idea-text');
+      ideaText.addEventListener('input', function() {
+        this.style.height = 'auto';
+        this.style.height = Math.min(this.scrollHeight, 180) + 'px';
+      });
       const area = document.createElement('div');
       area.className = 'about-area';
       about.parentNode.insertBefore(area, about);
